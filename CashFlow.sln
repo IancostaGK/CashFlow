@@ -7,17 +7,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{557C104B-8F7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{94B60268-CBE7-4508-ACDB-0C88E02A49DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Api", "src\CashFlow.Api\CashFlow.Api.csproj", "{67A95DE0-3D0B-4E2A-9425-5553C3D66838}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Api", "src\CashFlow.Api\CashFlow.Api.csproj", "{67A95DE0-3D0B-4E2A-9425-5553C3D66838}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Domain", "src\CashFlow.Domain\CashFlow.Domain.csproj", "{3C2B274A-026B-4764-8D0F-4643E1CC376B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Domain", "src\CashFlow.Domain\CashFlow.Domain.csproj", "{3C2B274A-026B-4764-8D0F-4643E1CC376B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Application", "src\CashFlow.Application\CashFlow.Application.csproj", "{814D10D5-3B73-4E7E-BFFD-F1BBB53E4B44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Application", "src\CashFlow.Application\CashFlow.Application.csproj", "{814D10D5-3B73-4E7E-BFFD-F1BBB53E4B44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Communication", "src\CashFlow.Communication\CashFlow.Communication.csproj", "{A90B547E-5EA9-4621-9F0E-270697E4637D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Communication", "src\CashFlow.Communication\CashFlow.Communication.csproj", "{A90B547E-5EA9-4621-9F0E-270697E4637D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Exception", "src\CashFlow.Exception\CashFlow.Exception.csproj", "{E3F76E78-5BF3-4848-9D2C-B7C31E4E48A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Exception", "src\CashFlow.Exception\CashFlow.Exception.csproj", "{E3F76E78-5BF3-4848-9D2C-B7C31E4E48A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Infrastructure", "src\CashFlow.Infrastructure\CashFlow.Infrastructure.csproj", "{9FF0C9EA-E979-40F5-90F2-CE3481DCFA0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlow.Infrastructure", "src\CashFlow.Infrastructure\CashFlow.Infrastructure.csproj", "{9FF0C9EA-E979-40F5-90F2-CE3481DCFA0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Tests", "tests\Validators.Tests\Validators.Tests.csproj", "{12B2A55A-72FA-4E12-BCAC-3DEA7EE443DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTestUtils", "tests\CommonTestUtils\CommonTestUtils.csproj", "{1BA44380-0F4E-44F5-A92E-F4C166D43E0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,14 @@ Global
 		{9FF0C9EA-E979-40F5-90F2-CE3481DCFA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FF0C9EA-E979-40F5-90F2-CE3481DCFA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FF0C9EA-E979-40F5-90F2-CE3481DCFA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12B2A55A-72FA-4E12-BCAC-3DEA7EE443DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12B2A55A-72FA-4E12-BCAC-3DEA7EE443DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12B2A55A-72FA-4E12-BCAC-3DEA7EE443DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12B2A55A-72FA-4E12-BCAC-3DEA7EE443DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA44380-0F4E-44F5-A92E-F4C166D43E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA44380-0F4E-44F5-A92E-F4C166D43E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA44380-0F4E-44F5-A92E-F4C166D43E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA44380-0F4E-44F5-A92E-F4C166D43E0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +72,8 @@ Global
 		{A90B547E-5EA9-4621-9F0E-270697E4637D} = {557C104B-8F75-4394-AE60-535431205835}
 		{E3F76E78-5BF3-4848-9D2C-B7C31E4E48A6} = {557C104B-8F75-4394-AE60-535431205835}
 		{9FF0C9EA-E979-40F5-90F2-CE3481DCFA0A} = {557C104B-8F75-4394-AE60-535431205835}
+		{12B2A55A-72FA-4E12-BCAC-3DEA7EE443DC} = {94B60268-CBE7-4508-ACDB-0C88E02A49DA}
+		{1BA44380-0F4E-44F5-A92E-F4C166D43E0B} = {94B60268-CBE7-4508-ACDB-0C88E02A49DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7C0BF809-35C8-4C7E-A3ED-DF71D9FF8E45}
