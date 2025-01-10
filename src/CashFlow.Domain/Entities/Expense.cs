@@ -1,8 +1,7 @@
-﻿using CashFlow.Communication.Enums;
+﻿using CashFlow.Domain.Enums;
+namespace CashFlow.Domain.Entities;
 
-namespace CashFlow.Communication.Reponses;
-
-public class ResponseExpenseJson
+public class Expense
 {
     public long Id { get; set; }
     public string Title { get; set; } = string.Empty;
