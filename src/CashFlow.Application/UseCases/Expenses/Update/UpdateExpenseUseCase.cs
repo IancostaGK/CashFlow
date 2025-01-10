@@ -1,20 +1,22 @@
 ﻿using AutoMapper;
+using CashFlow.Application.UseCases.Expenses.Register;
 using CashFlow.Communication.Reponses;
 using CashFlow.Communication.Requests;
 using CashFlow.Domain.Entities;
 using CashFlow.Domain.Repositories.Expenses;
+using CashFlow.Exception;
 using CashFlow.Exception.ExceptionsBase;
 
-namespace CashFlow.Application.UseCases.Expenses.Register;
+namespace CashFlow.Application.UseCases.Expenses.Update;
 
-public class RegisterExpenseUseCase : IRegisterExpenseUseCase
+public class UpdateExpenseUseCase : IUpdateExpenseUseCase
 {
-    private readonly IExpensesWriteOnlyRepository _repository;
+    private readonly IExpensesUpdateOnlyRepository _repository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public RegisterExpenseUseCase(
-        IExpensesWriteOnlyRepository repository, 
+    public UpdateExpenseUseCase(
+        IExpensesUpdateOnlyRepository repository,
         IUnitOfWork unitOfWork,
         IMapper mapper
         )
@@ -24,16 +26,18 @@ public class RegisterExpenseUseCase : IRegisterExpenseUseCase
         _mapper = mapper;
     }
 
-    public async Task<ResponseRequestExpenseJson> Execute(RequestExpenseJson request)
+    public async Task Execute(long id, RequestExpenseJson request)
     {
         Validate(request);
 
-        var entity = _mapper.Map<Expense>(request);
 
-        await _repository.Add(entity);
+        var expense = await _repository.GetById(id);
+        if (expense is null) throw new NotFoundException(ResourceErrorMessage.EXPENSE_NOT_FOUND);
+
+        var entity = _mapper.Map(request, expense);
+        _repository.Update(entity);
+
         await _unitOfWork.Commit();
-
-        return _mapper.Map<ResponseRequestExpenseJson>(entity);
     }
 
     private void Validate(RequestExpenseJson request)
@@ -41,10 +45,9 @@ public class RegisterExpenseUseCase : IRegisterExpenseUseCase
         var validator = new ExpenseValidator();
         var result = validator.Validate(request);
 
-        if(!result.IsValid)
+        if (!result.IsValid)
         {
             var errorsMessages = result.Errors.Select(e => e.ErrorMessage).ToList();
-
             throw new ErrorOnValidationException(errorsMessages);
         }
     }

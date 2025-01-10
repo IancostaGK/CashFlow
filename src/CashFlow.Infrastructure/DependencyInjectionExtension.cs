@@ -12,19 +12,17 @@ public static class DependencyInjectionExtension
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration config)
     {
         AddRepositories(services);
-        AddUnitOfWOrk(services);
         AddDbContext(services, config);
     }
 
     private static void AddRepositories(IServiceCollection services)
     {
-        services.AddScoped<IExpensesRepository, ExpensesRepository>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IExpensesReadOnlyRepository, ExpensesRepository>();
+        services.AddScoped<IExpensesWriteOnlyRepository, ExpensesRepository>();
+        services.AddScoped<IExpensesUpdateOnlyRepository, ExpensesRepository>();
     }    
 
-    private static void AddUnitOfWOrk(IServiceCollection services)
-    {
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
-    }    
     
     private static void AddDbContext(IServiceCollection services, IConfiguration config)
     {

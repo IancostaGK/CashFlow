@@ -8,10 +8,10 @@ namespace CashFlow.Application.UseCases.Expenses.GetById;
 
 public class GetExpenseByIdUseCase : IGetExpenseByIdUseCase
 {
-    private readonly IExpensesRepository _repository;
+    private readonly IExpensesReadOnlyRepository _repository;
     private readonly IMapper _mapper;
 
-    public GetExpenseByIdUseCase(IExpensesRepository repository, IMapper mapper)
+    public GetExpenseByIdUseCase(IExpensesReadOnlyRepository repository, IMapper mapper)
     {
         _repository = repository;
         _mapper = mapper;
@@ -21,10 +21,7 @@ public class GetExpenseByIdUseCase : IGetExpenseByIdUseCase
     {
         var result = await _repository.GetById(id);
 
-        if (result is null) {
-            throw new NotFoundException(ResourceErrorMessage.EXPENSE_NOT_FOUND);
-        }
-
+        if (result is null) throw new NotFoundException(ResourceErrorMessage.EXPENSE_NOT_FOUND);
         return _mapper.Map<ResponseExpenseJson>(result);
     }
 }
