@@ -4,6 +4,8 @@ using CashFlow.Communication.Enums;
 using CashFlow.Domain.Reports;
 using CashFlow.Domain.Repositories.Expenses;
 using ClosedXML.Excel;
+using MigraDoc.DocumentObjectModel;
+using System.Reflection;
 
 namespace CashFlow.Application.UseCases.Expenses.Report.Excel;
 

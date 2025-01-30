@@ -37,6 +37,8 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         var document = CreateDocument(month);
         var page = CreatePage(document);
 
+        CreateHeaderWithProfilePhotoAndName(page);
+
         var totalExpenses = expenses.Sum(expense => expense.Amount);
         CreateTotalSpentSection(page, month, totalExpenses);
 
@@ -124,6 +126,25 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
 
         paragraph.AddFormattedText($"{totalExpenses:f2} {CURRENCY_SYMBOL}", new Font { Name = FontHelper.WORKSANS_BOLD, Size = 50 });
     }
+
+    private void CreateHeaderWithProfilePhotoAndName(Section page)
+    {
+        var table = page.AddTable();
+        table.AddColumn();
+        table.AddColumn("300");
+
+        var row = table.AddRow();
+
+        var assembly = Assembly.GetExecutingAssembly();
+        var directoryName = Path.GetDirectoryName(assembly.Location);
+
+        //row.Cells[0].AddImage("C:\\Users\\Grupo Macro\\Documents\\IANFOTO.jpeg");
+
+        row.Cells[1].AddParagraph($"Hey, Ian Santos");
+        row.Cells[1].Format.Font = new Font { Name = FontHelper.RALEWAY_BOLD, Size = 16 };
+        row.Cells[1].VerticalAlignment = VerticalAlignment.Center;
+    }
+
 
     private Table CreateExpenseTable(Section page)
     {
